@@ -108,45 +108,105 @@
 
 \tableofcontents
 \newpage
+
 \section{项目背景}
+
+从二维的图像显示技术问世以来，如何让人享受到三维的视觉体验，就成了一个吸引人的问题。从生理上说，人的三维视觉体验主要有两个来源，一是双眼位置不同导致观看到的图像的细微差别，二是观看物体时眼球晶状体的聚焦位置。后者对于显示技术要求较高，因为固定的荧屏只能在一个特定的平面上成像，人眼观看时必然会聚焦在该平面上，而不可能聚焦在其他位置。因此，基于双目视差的三维显示技术发展较为成熟，是目前商业和市场应用的主流技术。接下来我们将简要介绍一下较为常见的若干历史技术。
+
 \subsection{三维视觉体验的发展历史}
-啦啦啦
+
+\subsubsection{双眼立体画}
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=8cm]{1.jpg}}
+  \caption{一张双眼立体画}
+\end{figure}
+
+这是最为简单的一种技术，确切地说，它完全没有包含任何图像显示技术，仅仅是将双眼看到的图像分别印出。观看者需要想象在纸张背后无穷远处存在一个物体，并努力去观看该物体，以使得自己的两只眼睛直视前方，分别看到相应的图片（图\ref{fig2}）。经过一些训练，观看者可以感受到两张图片合二为一，并产生看到了立体图形的体验。
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=8cm]{2.png}}
+  \caption{双眼看纸面与双眼直视前方的区别}
+  \label{fig2}
+\end{figure}
+
+这种立体画最大的一个局限就是人眼无法向两侧看，所以两张图片水平方向距离必须小于或等于瞳孔距离（约6厘米），无法制作出更大的图片。为了突破这一限制，以及让人观看起来更舒适，有类似于望远镜的工具出现，如图\ref{fig3}，它能将距离较远的两张图通过光学器件送入人眼，方便观赏。
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=3cm]{3.png}}
+  \caption{立体视工具}
+  \label{fig3}
+\end{figure}
+
+\subsubsection{红蓝眼镜}
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=8cm]{4.jpg}}
+  \caption{一副红蓝眼镜}
+\end{figure}
+
+根据色彩原理，戴上红蓝眼镜后，双眼只能分别看到红色和蓝色分量，这两个分量的图像是独立的，因此可以为双眼提供不同的图像，组合出含有红色和蓝色分量的视觉感受，使人产生三维感。其缺点是双眼看到的颜色不同，会有强烈的冲突感，常常导致观看者感到画面红蓝闪烁，无法融入。
+
+\subsubsection{偏振光眼镜}
+
+根据光的偏振性原理，水平方向偏振的光无法穿过竖直方向的偏振膜，竖直方向偏振的光亦无法穿过水平方向的偏振膜。因此，可以制成一种眼镜，其两只镜片覆盖了互相垂直的偏振膜，而屏幕上同时以两种偏振方向的光分别呈现左右眼的画面，通过眼镜就可以感受到三维视觉。这种技术的缺点主要在于需要特殊的显示装置，而且观众观看时不可以将头倾斜，否则每只眼睛都会看到一些另一只眼睛应当看到的图像，体验并不舒适。
+
+\subsubsection{电子快门眼镜}
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=8cm]{5.png}}
+  \caption{一副电子快门眼镜}
+\end{figure}
+
+电子快门型3D显示技术也称为主动式3D（Active Shutter 3D），
+
+这种眼镜的两只镜片受电信号控制，可以快速地在透光和不透光状态间转换。此技术在相当长的时期内被用于播放3D电影。播放时，左右眼应当看到的画面会以较高频率轮流在银幕上展示，另有一个红外线信号指示出当前正在显示的内容应当由左眼还是右眼看到。眼镜上的红外接收装置会根据这个信号来遮挡住一只眼睛，只让另一只眼睛看到画面。由于交替频率高，根据人眼的视觉暂留效应，观众不会感觉到画面交替，而是会感觉到两只眼睛看到了不同的视频内容，因此产生3D体验。
+
 \subsection{裸眼3D技术的优势}
+
+从以上总结可以看出，历史上的三维视觉体验技术，常常需要观看者做出特殊的动作，或者佩戴特殊的设备，这阻碍了三维视觉体验技术的普及。所谓“裸眼3D技术”，就是指观看者不需要佩戴任何设备，直接注视屏幕，即可感受到三维效果的技术。它具有
+
 \section{技术细节}
+
 \subsection{选择光栅的原因}
+
 \subsection{光学性质研究}
+
 这个项目需要进行大量光学方面的研究，以探索光栅对于发光源的分光作用，模拟用户看到的画面。为此，我们自行开发了一个光学模拟平台。该平台由Python调用pygame库写成，允许用户在工作区放置若干光源、光栅、透镜及观察者，能够追踪光线、计算实际折射情形。本小节的图片皆由此模拟平台生成。
 
 所有的3D产品的基本思想都是让人的两只眼睛可以分别接收到不同的图像, 而我们采用的3D光栅可以在一定程度上达到这样的目的. 3D光栅的横截面如图\ref{fig:226}所示.
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=\linewidth]{226.png}}
   \caption{3D光栅的横截面}
   \label{fig:226}
 \end{figure}
+
 光栅的截面由一系列小的圆柱形的棱构成. 图\ref{fig:227}给出了我们描述棱的参数的一些符号:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{227.png}}
   \caption{描述棱的参数的符号}
   \label{fig:227}
 \end{figure}
+
 光栅上一系列的小圆柱体构成一一系列的透镜组, 在光栅下方的像素点在不同的方向成像, 这样一来, 对于某一些像素点, 只有在一些特定的角度才能够看到. 这样就拥有了将两只眼睛需要看到的景象分开的前提. 对于单个像素点, 在这样的棱镜组中成像的结果如图\ref{fig:217}所示:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{217.png}}
   \caption{单个像素点的成像情况}
   \label{fig:217}
 \end{figure}
+
 图\ref{fig:217}中有两个像素点, 他们成的像分别使用红色和黄色的像点表示. 可以很清晰地看出来, 总共有3个主要的观察角度可以看到这一对点的像, 人眼在这些区域可以保证两只眼睛看到不同的像素点. 所以我们可以将所有的像素点分为两类. 一类负责显示左眼看到的图像, 另一类负责显示右眼看到的图像. 于是我们可以考虑使用过干个连续的像素去显示一只眼睛所看到的景象, 这两种像素段交替出现, 我们将这种像素段成为一个单元. 比如图\ref{fig:223}就是这两类像素交替出现的周期是3的情形:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{223.png}}
   \caption{两类像素交替出现的周期是3的情形}
   \label{fig:223}
 \end{figure}
+
 像素下方同一种颜色的区域是显示一只眼睛看到的结果. 结果可以看出, 我们对于一对单元, 确实可以在不同的区域显示出不同的眼睛看到的图像. 大面积像素点的行为如图\ref{fig:225}:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{225.png}}
   \caption{大面积像素点的行为}
   \label{fig:225}
 \end{figure}
+
 %% TODO
 %% TODO
 %% TODO
@@ -160,29 +220,36 @@
 %% TODO
 %% TODO
 这张图里, 总共有48个像素点成像, 共8个单元. 我们可以很明显看出来在不同的观察扇区能够看到不同的图像. 但是值得注意的是, 人眼观察事物是有一个张角的, 所以单个扇区对人眼张角要足够大, 否则一只眼睛就可以看到一个以上的扇区了, 否则就会导致3D效果缺失. 所以说像素距离里圆柱中心的距离非常重要, 否则就会导致图\ref{fig:228}的情况:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{228.png}}
   \caption{大面积像素点的行为}
   \label{fig:228}
 \end{figure}
+
 扇区的间隔过小. 导致3D效果消失. 同时, 如果像素过于靠近圆柱中心也会失败,如图\ref{fig:229}:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{229.png}}
   \caption{像素过于靠近圆柱中心}
   \label{fig:229}
 \end{figure}
+
 否则就会像上图一样使得像点过远, 超出了正常人的观察距离. 所以为了达到目的, 光栅的厚度非常重要.
 
 除此之外我们还可以放置更多种类的像素, 比如图\ref{fig:230}中有3种像素:
-\begin{figure}
+\begin{figure}[h!]
   \centerline{\includegraphics[width=10cm]{230.png}}
   \caption{3种像素的效果}
   \label{fig:230}
 \end{figure}
+
 所以我们可以放上在3个角度观察到的图像. 这样3D效果会被增强.
+
 \subsection{测试平台搭建}
+
 \subsection{可行性测试}
+
 \section{其他前沿工作}
+
 \subsection{}
 
 \end{CJK}
