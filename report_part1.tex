@@ -1,0 +1,189 @@
+\documentclass[a4paper, 11pt]{article}
+
+%%%%%% 导入包 %%%%%%
+\usepackage{CJKutf8}
+\usepackage{graphicx}
+\usepackage[unicode]{hyperref}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{indentfirst}
+
+%%%%%% 设置字号 %%%%%%
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+
+%%%% 设置 section 属性 %%%%
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+{-1.5ex \@plus -.5ex \@minus -.2ex}%
+{.5ex \@plus .1ex}%
+{\normalfont\sihao\CJKfamily{hei}}}
+\makeatother
+
+%%%% 设置 subsection 属性 %%%%
+\makeatletter
+\renewcommand\subsection{\@startsection{subsection}{1}{\z@}%
+{-1.25ex \@plus -.5ex \@minus -.2ex}%
+{.4ex \@plus .1ex}%
+{\normalfont\xiaosihao\CJKfamily{hei}}}
+\makeatother
+
+%%%% 设置 subsubsection 属性 %%%%
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{1}{\z@}%
+{-1ex \@plus -.5ex \@minus -.2ex}%
+{.3ex \@plus .1ex}%
+{\normalfont\xiaosihao\CJKfamily{hei}}}
+\makeatother
+
+%%%% 段落首行缩进两个字 %%%%
+\makeatletter
+\let\@afterindentfalse\@afterindenttrue
+\@afterindenttrue
+\makeatother
+\setlength{\parindent}{2em}  %中文缩进两个汉字位
+
+
+%%%% 下面的命令重定义页面边距，使其符合中文刊物习惯 %%%%
+\addtolength{\topmargin}{-54pt}
+\setlength{\oddsidemargin}{0.63cm}  % 3.17cm - 1 inch
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{14.66cm}
+\setlength{\textheight}{24.00cm}    % 24.62
+
+%%%% 下面的命令设置行间距与段落间距 %%%%
+\linespread{1.4}
+% \setlength{\parskip}{1ex}
+\setlength{\parskip}{0.5\baselineskip}
+
+%%%% 正文开始 %%%%
+\usepackage{ctex}
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+%%%% 定理类环境的定义 %%%%
+\newtheorem{example}{例}             % 整体编号
+\newtheorem{algorithm}{算法}
+\newtheorem{theorem}{定理}[section]  % 按 section 编号
+\newtheorem{definition}{定义}
+\newtheorem{axiom}{公理}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{remark}{注解}
+\newtheorem{condition}{条件}
+\newtheorem{conclusion}{结论}
+\newtheorem{assumption}{假设}
+
+%%%% 重定义 %%%%
+\renewcommand{\contentsname}{目录}  % 将Contents改为目录
+\renewcommand{\abstractname}{摘要}  % 将Abstract改为摘要
+\renewcommand{\refname}{参考文献}   % 将References改为参考文献
+\renewcommand{\indexname}{索引}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\algorithm}{算法}
+
+
+%%%% 定义标题格式，包括title，author，affiliation，email等 %%%%
+\title{基于光栅的裸眼3D技术\\调研报告第一部分}
+\author{王子博，赵子瑞，鲁吴越，李嘉豪}
+\date{2017年3月}
+
+
+%%%% 以下部分是正文 %%%%
+\maketitle
+
+\tableofcontents
+\newpage
+\section{项目背景}
+\subsection{三维视觉体验的发展历史}
+啦啦啦
+\subsection{裸眼3D技术的优势}
+\section{技术细节}
+\subsection{选择光栅的原因}
+\subsection{光学性质研究}
+这个项目需要进行大量光学方面的研究，以探索光栅对于发光源的分光作用，模拟用户看到的画面。为此，我们自行开发了一个光学模拟平台。该平台由Python调用pygame库写成，允许用户在工作区放置若干光源、光栅、透镜及观察者，能够追踪光线、计算实际折射情形。本小节的图片皆由此模拟平台生成。
+
+所有的3D产品的基本思想都是让人的两只眼睛可以分别接收到不同的图像, 而我们采用的3D光栅可以在一定程度上达到这样的目的. 3D光栅的横截面如图\ref{fig:226}所示.
+\begin{figure}
+  \centerline{\includegraphics[width=\linewidth]{226.png}}
+  \caption{3D光栅的横截面}
+  \label{fig:226}
+\end{figure}
+光栅的截面由一系列小的圆柱形的棱构成. 图\ref{fig:227}给出了我们描述棱的参数的一些符号:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{227.png}}
+  \caption{描述棱的参数的符号}
+  \label{fig:227}
+\end{figure}
+光栅上一系列的小圆柱体构成一一系列的透镜组, 在光栅下方的像素点在不同的方向成像, 这样一来, 对于某一些像素点, 只有在一些特定的角度才能够看到. 这样就拥有了将两只眼睛需要看到的景象分开的前提. 对于单个像素点, 在这样的棱镜组中成像的结果如图\ref{fig:217}所示:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{217.png}}
+  \caption{单个像素点的成像情况}
+  \label{fig:217}
+\end{figure}
+图\ref{fig:217}中有两个像素点, 他们成的像分别使用红色和黄色的像点表示. 可以很清晰地看出来, 总共有3个主要的观察角度可以看到这一对点的像, 人眼在这些区域可以保证两只眼睛看到不同的像素点. 所以我们可以将所有的像素点分为两类. 一类负责显示左眼看到的图像, 另一类负责显示右眼看到的图像. 于是我们可以考虑使用过干个连续的像素去显示一只眼睛所看到的景象, 这两种像素段交替出现, 我们将这种像素段成为一个单元. 比如图\ref{fig:223}就是这两类像素交替出现的周期是3的情形:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{223.png}}
+  \caption{两类像素交替出现的周期是3的情形}
+  \label{fig:223}
+\end{figure}
+像素下方同一种颜色的区域是显示一只眼睛看到的结果. 结果可以看出, 我们对于一对单元, 确实可以在不同的区域显示出不同的眼睛看到的图像. 大面积像素点的行为如图\ref{fig:225}:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{225.png}}
+  \caption{大面积像素点的行为}
+  \label{fig:225}
+\end{figure}
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+%% TODO
+这张图里, 总共有48个像素点成像, 共8个单元. 我们可以很明显看出来在不同的观察扇区能够看到不同的图像. 但是值得注意的是, 人眼观察事物是有一个张角的, 所以单个扇区对人眼张角要足够大, 否则一只眼睛就可以看到一个以上的扇区了, 否则就会导致3D效果缺失. 所以说像素距离里圆柱中心的距离非常重要, 否则就会导致图\ref{fig:228}的情况:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{228.png}}
+  \caption{大面积像素点的行为}
+  \label{fig:228}
+\end{figure}
+扇区的间隔过小. 导致3D效果消失. 同时, 如果像素过于靠近圆柱中心也会失败,如图\ref{fig:229}:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{229.png}}
+  \caption{像素过于靠近圆柱中心}
+  \label{fig:229}
+\end{figure}
+否则就会像上图一样使得像点过远, 超出了正常人的观察距离. 所以为了达到目的, 光栅的厚度非常重要.
+
+除此之外我们还可以放置更多种类的像素, 比如图\ref{fig:230}中有3种像素:
+\begin{figure}
+  \centerline{\includegraphics[width=10cm]{230.png}}
+  \caption{3种像素的效果}
+  \label{fig:230}
+\end{figure}
+所以我们可以放上在3个角度观察到的图像. 这样3D效果会被增强.
+\subsection{测试平台搭建}
+\subsection{可行性测试}
+\section{其他前沿工作}
+\subsection{}
+
+\end{CJK}
+\end{document}
