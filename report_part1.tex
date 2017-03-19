@@ -3,11 +3,14 @@
 %%%%%% 导入包 %%%%%%
 \usepackage{CJKutf8}
 \usepackage{graphicx}
-\usepackage[unicode]{hyperref}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black,
+            unicode]{hyperref}
 \usepackage{xcolor}
 \usepackage{cite}
 \usepackage{indentfirst}
-
 %%%%%% 设置字号 %%%%%%
 \newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
 \newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
@@ -162,15 +165,40 @@
 
 \subsection{裸眼3D技术的优势}
 
-从以上总结可以看出，历史上的三维视觉体验技术，常常需要观看者做出特殊的动作，或者佩戴特殊的设备，这阻碍了三维视觉体验技术的普及。所谓“裸眼3D技术”，就是指观看者不需要佩戴任何设备，直接注视屏幕，即可感受到三维效果的技术。它具有
+从以上总结可以看出，历史上的三维视觉体验技术，常常需要观看者做出特殊的动作，或者佩戴特殊的设备，这阻碍了三维视觉体验技术的普及。所谓“裸眼3D技术”，就是指观看者不需要佩戴任何设备，直接注视屏幕，即可感受到三维效果的技术。
 
 \section{技术细节}
 
 \subsection{选择光栅的原因}
 
+目前能让裸眼两只眼睛看到不同画面的技术主要有全息摄影, 光栅遮挡法, 光栅分光法和指向性光源技术. 我们小组希望找到一种简单廉价的选择, 只在屏幕上覆盖一层膜, 无须使用特殊显示器, 即可让观看者体验到三维视觉. 因此, 我们尝试了光栅遮挡法(图\ref{fig6})和光栅分光法(图\ref{fig7}). 其中前者的原理是在屏幕前设置一个黑色线条和透明部分不断交替的光栅层,从左眼的视角看,这些黑色线条恰遮挡住所有偶数列的像素,而从右眼的视角看,这些黑色线条恰遮挡住所有奇数列的像素.这种技术不仅会导致屏幕亮度损失一半,而且对于用户头部移动过于敏感.通过简单的计算不难发现,用户只要水平移动头部3厘米,左眼和右眼所看到的画面就会恰好颠倒,三维效果完全被破坏.我们没有选择这种技术,而选择了光栅分光法.其原理是使用一系列柱状透镜改变光路,使得只有特定的像素能被左眼和右眼分别看到.这种技术比光栅遮挡法难研究,但可以产生非常好的观看效果.图\ref{fig7}和图\ref{fig8}分别是从两个角度拍摄的使用光栅分光法制成的三维效果卡片,这种卡片非常廉价且观赏效果令人叹服.
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=\linewidth]{6.png}}
+  \caption{光栅遮挡法}
+  \label{fig6}
+\end{figure}
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=\linewidth]{7.png}}
+  \caption{光栅分光法}
+  \label{fig7}
+\end{figure}
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=\linewidth]{6.png}}
+  \caption{光栅遮挡法}
+  \label{fig6}
+\end{figure}
+\begin{figure}[h!]
+  \centerline{\includegraphics[width=\linewidth]{7.png}}
+  \caption{光栅分光法}
+  \label{fig7}
+\end{figure}
+
+\subsection{主要难点}
+
 \subsection{光学性质研究}
 
-这个项目需要进行大量光学方面的研究，以探索光栅对于发光源的分光作用，模拟用户看到的画面。为此，我们自行开发了一个光学模拟平台。该平台由Python调用pygame库写成，允许用户在工作区放置若干光源、光栅、透镜及观察者，能够追踪光线、计算实际折射情形。本小节的图片皆由此模拟平台生成。
+这个项目需要进行大量光学方面的研究，以探索光栅对于发光源的分光作用，模拟用户看到的画面。为此，我们自行开发了一个光学模拟平台。该平台由Python调用pygame库写成，允许用户在工作区放置若干光源、光栅、透镜及观察者，能够追踪光线、计算实际折射成像情形。本小节的图片皆由此模拟平台生成。
 
 所有的3D产品的基本思想都是让人的两只眼睛可以分别接收到不同的图像, 而我们采用的3D光栅可以在一定程度上达到这样的目的. 3D光栅的横截面如图\ref{fig:226}所示.
 \begin{figure}[h!]
@@ -245,6 +273,8 @@
 所以我们可以放上在3个角度观察到的图像. 这样3D效果会被增强.
 
 \subsection{测试平台搭建}
+
+
 
 \subsection{可行性测试}
 
